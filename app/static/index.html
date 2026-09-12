@@ -3,6 +3,28 @@
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NetShield ARP Guardian</title><link rel="stylesheet" href="/static/styles.css"></head>
 <body>
+<div id="login-screen">
+  <form id="login-form" class="login-card">
+    <div class="login-brand"><span class="mark">◆</span><div><h1>NETSHIELD</h1><small class="eyebrow">ARP GUARDIAN · SECURE CONSOLE</small></div></div>
+    <p class="sub">Sign in to the local security console. Administrative actions and investigation activity are recorded in the audit trail.</p>
+    <div class="login-field"><label>USERNAME</label><input id="login-user" autocomplete="username" value="admin" required></div>
+    <div class="login-field"><label>PASSWORD</label><input id="login-pass" type="password" autocomplete="current-password" required></div>
+    <button class="button accent login-submit" type="submit">Sign in securely</button>
+    <div id="login-error" class="login-error"></div>
+    <div class="security-note">Protected by PBKDF2 password hashing, expiring HttpOnly sessions, CSRF validation, login throttling and security response headers.</div>
+  </form>
+</div>
+<div id="password-change">
+  <form id="password-form" class="password-card">
+    <h2>Set a new administrator password</h2>
+    <p>This local administrator account is using its bootstrap credential. Change it before continuing.</p>
+    <input id="old-password" type="password" placeholder="Current password" autocomplete="current-password" required>
+    <input id="new-password" type="password" placeholder="New password (12+ characters)" autocomplete="new-password" minlength="12" required>
+    <input id="new-password-2" type="password" placeholder="Repeat new password" autocomplete="new-password" minlength="12" required>
+    <button class="button accent" type="submit">Update password</button>
+    <div id="password-error" class="password-error"></div>
+  </form>
+</div>
 <aside class="sidebar">
   <div class="brand"><div class="mark">◆</div><div><strong>NETSHIELD</strong><small>ARP GUARDIAN 2.0</small></div></div>
   <nav>
@@ -17,11 +39,10 @@
     <button class="nav" data-view="reports">Reports</button>
     <button class="nav" data-view="audit">Audit</button>
   </nav>
-  <div class="sidebar-foot"><span class="dot"></span> Local detection engine<br><small>No external API keys</small></div>
 </aside>
 <main>
 <header><div><p class="eyebrow">LOCAL SECURITY CONSOLE</p><h1 id="page-title">Network overview</h1></div>
-<div class="head-actions"><span id="connection" class="connection"><i></i> CONNECTING</span><button id="simulate" class="button accent">Simulate event</button></div></header>
+<div class="head-actions"><div id="user-chip" class="user-chip"></div><button id="logout" class="button small">Sign out</button><span id="connection" class="connection"><i></i> CONNECTING</span><button id="simulate" class="button accent">Simulate event</button></div></header>
 <section id="app" class="content"></section>
 </main>
 <dialog id="simulator"><form id="sim-form"><div class="dialog-head"><div><p class="eyebrow">SAFE TEST LAB</p><h2>Inject synthetic ARP event</h2></div><button type="button" id="close-dialog" class="close">×</button></div>

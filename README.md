@@ -84,3 +84,21 @@ quality checks and controlled builds. Install the runtime dependencies with:
 ```bash
 python -m pip install -r requirements.txt
 ```
+
+
+## Secure local console
+
+The web console now uses local authentication before protected API access. Passwords are
+stored with PBKDF2-HMAC-SHA256 and a per-user salt; sessions use random opaque tokens,
+HttpOnly/SameSite cookies and a short expiration window. Mutating API requests require a
+CSRF token, failed logins are throttled/locked temporarily, and security response headers
+are applied by the HTTP security boundary.
+
+On first startup the local bootstrap administrator is `admin`. Set
+`NETSHIELD_ADMIN_PASSWORD` before first startup to choose the bootstrap password; otherwise
+the application uses its development bootstrap credential and forces a password change.
+Choose a strong 12+ character password immediately for any non-demo deployment.
+
+The Audit page is intended for security operations: it shows actors, administrative actions,
+affected resources, event details, security-sensitive action counts, filtering, and
+expandable evidence records. It is not a generic application log.

@@ -13,6 +13,8 @@ from app.baselines.service import BaselineService
 from app.audit.service import AuditService
 from app.network.interfaces import InterfaceDiscovery
 from app.api.routes import build_router
+from app.auth.service import AuthService, COOKIE_NAME
+from app.auth.security import SecurityMiddleware
 
 database=Database(DB_PATH)
 manager=ConnectionManager()
@@ -20,12 +22,15 @@ detector=DetectionService(database,manager)
 incidents=IncidentService(database)
 baseline=BaselineService(database)
 audit=AuditService(database)
+auth=AuthService(database)
 interfaces=InterfaceDiscovery()
 
 app=FastAPI(title=APP_NAME,version=VERSION,description="Local ARP spoofing detection and network security console.")
+auth.initialize()
+app.add_middleware(SecurityMiddleware, auth=auth)
 STATIC_DIR=Path(__file__).parent/"static"
 app.mount("/static",StaticFiles(directory=STATIC_DIR),name="static")
-app.include_router(build_router(database,detector,incidents,baseline,audit,interfaces))
+app.include_router(build_router(database,detector,incidents,baseline,audit,interfaces,auth))
 
 
 @app.exception_handler(RequestValidationError)
@@ -47,7 +52,9 @@ async def api_exception_handler(request, exc):
     raise exc
 
 @app.on_event("startup")
-def startup(): database.initialize()
+def startup():
+    database.initialize()
+    auth.initialize()
 
 @app.get("/",include_in_schema=False)
 def index(): return FileResponse(STATIC_DIR/"index.html")

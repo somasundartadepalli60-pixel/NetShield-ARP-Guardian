@@ -1,0 +1,19 @@
+{
+  "ui": "industry security console refresh",
+  "audit": "security operations audit trail with summary, filters and expandable details",
+  "authentication": {
+    "password_hash": "PBKDF2-HMAC-SHA256",
+    "session_cookie": "HttpOnly + SameSite=Lax + expiration",
+    "csrf": true,
+    "login_throttling": true,
+    "temporary_lockout": true,
+    "security_headers": true,
+    "forced_bootstrap_password_change": true
+  },
+  "source_loc_nonblank": 606968,
+  "source_files": 2027,
+  "git_metadata_touched": false,
+  "git_head": "c0845e7f98349059f0234d5c7dc2eda81d2be913",
+  "git_commits_seen": 302,
+  "external_api_keys": false
+}
