@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NetShield ARP Guardian</title><link rel="stylesheet" href="/static/styles.css"></head>
+<body>
+<aside class="sidebar">
+  <div class="brand"><div class="mark">◆</div><div><strong>NETSHIELD</strong><small>ARP GUARDIAN 2.0</small></div></div>
+  <nav>
+    <button class="nav active" data-view="overview">Overview</button>
+    <button class="nav" data-view="devices">Devices</button>
+    <button class="nav" data-view="alerts">Alerts</button>
+    <button class="nav" data-view="incidents">Incidents</button>
+    <button class="nav" data-view="arp">ARP activity</button>
+    <button class="nav" data-view="rules">Detection rules</button>
+    <button class="nav" data-view="baselines">Baselines</button>
+    <button class="nav" data-view="interfaces">Interfaces</button>
+    <button class="nav" data-view="reports">Reports</button>
+    <button class="nav" data-view="audit">Audit</button>
+  </nav>
+  <div class="sidebar-foot"><span class="dot"></span> Local detection engine<br><small>No external API keys</small></div>
+</aside>
+<main>
+<header><div><p class="eyebrow">LOCAL SECURITY CONSOLE</p><h1 id="page-title">Network overview</h1></div>
+<div class="head-actions"><span id="connection" class="connection"><i></i> CONNECTING</span><button id="simulate" class="button accent">Simulate event</button></div></header>
+<section id="app" class="content"></section>
+</main>
+<dialog id="simulator"><form id="sim-form"><div class="dialog-head"><div><p class="eyebrow">SAFE TEST LAB</p><h2>Inject synthetic ARP event</h2></div><button type="button" id="close-dialog" class="close">×</button></div>
+<div class="form-grid"><label>Scenario<select name="scenario"><option value="normal">Normal</option><option value="gateway_change">Gateway change</option><option value="duplicate_ip">Duplicate IP</option><option value="gratuitous_conflict">Gratuitous conflict</option></select></label>
+<label>Source IP<input name="source_ip" value="192.168.1.1"></label><label>Source MAC<input name="source_mac" value="aa:bb:cc:dd:ee:01"></label>
+<label>Target IP<input name="target_ip" value="192.168.1.10"></label><label>Target MAC<input name="target_mac" value="aa:bb:cc:dd:ee:10"></label>
+<label>Operation<select name="operation"><option>reply</option><option>request</option></select></label><label>Interface<input name="interface" value="sim0"></label></div>
+<div class="dialog-actions"><button type="submit" class="button accent">Process observation</button><span id="sim-result"></span></div></form></dialog>
+<script src="/static/app.js"></script>
+</body></html>

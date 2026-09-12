@@ -1,0 +1,7 @@
+# Reproducible baseline for the project-quality environment.
+fastapi==0.115.14
+uvicorn[standard]==0.34.3
+pydantic==2.11.7
+pytest==8.4.1
+httpx==0.28.1
+coverage==7.9.1

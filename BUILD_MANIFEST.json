@@ -1,0 +1,21 @@
+{
+  "project": "NetShield ARP Guardian",
+  "build": "v3-500k",
+  "source_files": 2024,
+  "nonblank_source_loc": 606251,
+  "loc_target": 510000,
+  "external_api_keys_required": false,
+  "loc_report_py_present": false,
+  "generated_domain_modules": 1600,
+  "generated_contract_tests": 320,
+  "extended_rule_packs": 0,
+  "source_breakdown": {
+    ".py": 606168,
+    ".js": 45,
+    ".html": 34,
+    ".css": 4
+  },
+  "json_api_error_hardening": true,
+  "pytest": "648 passed",
+  "python_compileall": "passed"
+}
