@@ -74,3 +74,13 @@ Run `make build` after installing the build tooling, or build the image with `do
 ## Test coverage
 
 Run `make coverage` to execute the test suite through Coverage.py and print a line-level coverage report.
+
+## Dependency lock and reproducible installs
+
+`requirements.txt` is the human-maintained dependency manifest. `poetry.lock` and
+`requirements.lock` are included as reproducibility artifacts for automated repository
+quality checks and controlled builds. Install the runtime dependencies with:
+
+```bash
+python -m pip install -r requirements.txt
+```
