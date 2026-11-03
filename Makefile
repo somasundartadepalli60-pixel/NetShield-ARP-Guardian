@@ -1,5 +1,5 @@
 .PHONY: install test coverage run build clean
-
+   
 install:
 	python -m pip install -r requirements.lock
 
