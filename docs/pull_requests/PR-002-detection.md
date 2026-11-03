@@ -1,5 +1,4 @@
 # PR 002: Clarify detection boundaries
-
 ## Goal
 Keep each detection signal independently explainable.
 
