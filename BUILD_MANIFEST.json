@@ -12,7 +12,7 @@
     ".py": 606168,
     ".js": 45,
     ".html": 34,
-    ".css": 4
+    ".css"
   },
   "json_api_error_hardening": true,
   "pytest": "648 passed",
