@@ -1,5 +1,5 @@
 {
-  "project": "ARP Spoofing Detector",
+  "project": "Net Shield ARP Guardian",
   "build": "version 1.0.0",
   "source_files": 2024,
   "nonblank_source_loc": 606251,
